@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // 🌘 CSS Scope Inline (https://github.com/gnat/css-scope-inline)
+    window.cssScopeCount ??= 1 // Let extra copies share the scope count.
+    window.cssScope ??= new MutationObserver(mutations => { // Allow 1 observer.
+      document?.body?.querySelectorAll('style:not([ready])').forEach(node => { // Faster than walking MutationObserver results when recieving subtree (DOM swap, htmx, ajax, jquery).
+        var scope = 'me__' + (window.cssScopeCount++) // Ready. Make unique scope, example: .me__1234
+        node.parentNode.classList.add(scope)
+        node.textContent = node.textContent
+          .replace(/(?:^|\.|(\s|[^a-zA-Z0-9\-\_]))(me|this|self)(?![a-zA-Z])/g, '$1.' + scope) // Can use: me this self
+        node.setAttribute('ready', '')
+      })
+    }).observe(document.documentElement, { childList: true, subtree: true })
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <hgroup>
+      <style>
+        me {
+          text-align: center;
+        }
+      </style>
+      <h1>☕️ Home Coffee Shop Experience ☕️</h1>
+      <h4>
+        <i>Extraordinare 💫</i>
+      </h4>
+    </hgroup>
+  </header>
+
+  <main class="container">
+    <h2>Le Menu:</h2>
+
+    <section>
+
+      <div class="container">
+        <details>
+          <summary>
+            Latte
+          </summary>
+          <p>
+            You know it, you love it -- the classic latte. Highest milk to espresso ratio.
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Flat White
+          </summary>
+          <p>
+            The younger, hipper cousin of the latte, featuring the same amount of 'spro with less milk. You'll find the
+            espresso more prominent in this drink.
+          </p>
+          <p>
+            Served 🔥 only.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Cappuccino
+          </summary>
+          <p>
+            A (much) more foamy flat white, no cap.
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Cortado
+          </summary>
+          <p>
+            For the <i>true</i> coffee aficionado -- this drink features the lowest milk to 'spro ratio, allowing the
+            notes of the coffee to cut through the milk.
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Mocha
+          </summary>
+          <p>
+            Where coffee and cocoa engage in a delightful dance of caffeinated decadence. Ok, ChatGPT wrote this one,
+            lol.
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Americano
+          </summary>
+          <p>
+            It's giving black coffee, but make it 💫 <i>espresso</i> 💫.
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Matcha Latte
+          </summary>
+          <p>
+            Looking for a solid, rolling buzz? Sounds like you and a matcha latte are a "matcha" made in heaven. 😉
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+
+      <div class="container">
+        <details>
+          <summary>
+            Chai Latte
+          </summary>
+          <p>
+            Made with our high quali-tea, top-secret chai formula, this chai latte will fill your soul or your money
+            back.
+          </p>
+          <p>
+            Served 🔥 or 🧊.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <div class="container">
+      <details role="list">
+        <summary aria-haspopup="listbox">Flavor Options</summary>
+        <ul role="listbox">
+          <li>Vanilla 🍦</li>
+          <li>Mocha 🍫</li>
+          <li>White Mocha ⚪️</li>
+          <li>Brown sugar 🟤</li>
+          <li>Honey 🍯</li>
+          <li>Maple 🍁</li>
+        </ul>
+      </details>
+    </div>
+
+
+
+
+  </main>
+
+  <footer>
+    <style>
+      me {
+        text-align: center;
+      }
+    </style>
+    Made with love 💞 by Caleb Reyes
+  </footer>
+
+</body>
+
+</html>
